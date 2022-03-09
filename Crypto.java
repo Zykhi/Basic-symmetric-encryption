@@ -74,7 +74,7 @@ public class Crypto {
         for (int i = 0; i < vTxt.length(); i++) {
             for (int j = 0; j < chars.length; j++) {
                 if (vTxt.charAt(i) == chars[j]) {
-                    vOcc[j] ++;
+                    vOcc[j]++;
                 }
             }
         }
@@ -92,7 +92,17 @@ public class Crypto {
         vChiffre = vChiffre.toUpperCase();
         String vClair = "";
         // =========== TODO Question-3
-
+        char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+                'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+        for (int i = 0; i < vChiffre.length(); i++) {
+            for (int j = 0; j < chars.length; j++) {
+                if (vChiffre.charAt(i) == chars[j]) {
+                    vClair += pKey[j];
+                }
+            }
+            if (vChiffre.charAt(i) == ' ')
+                vClair += " ";
+        }
         // =========== Fin TODO Question-3
         return vClair;
     } // subDecrypt()
@@ -115,6 +125,9 @@ public class Crypto {
     public static void main(final String[] pArgs) {
 
         // TODO Question-3
+        char[] vKey = { 'V', '.', '.', 'M', 'H', 'N', 'O', 'P', 'C', 'Q', 'R', 'S', 'T', '.', 'I', 'J', '.', 'D', 'L',
+                'E', 'G', '.', 'U', 'A', 'B', 'F' };
+        System.out.println(subDecrypt("crypto1.txt", vKey));
 
         // Fin TODO Question-3
 
