@@ -4,6 +4,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Crypto {
+    private static char[] aChars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+            'Q', 'R', 'S',
+            'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
     // ===========================================================
     // METHODES UTILES
     // ===========================================================
@@ -69,11 +72,9 @@ public class Crypto {
          */
         int[] vOcc = new int[26];
         // ========== TODO Question-1
-        char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-                'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
         for (int i = 0; i < vTxt.length(); i++) {
-            for (int j = 0; j < chars.length; j++) {
-                if (vTxt.charAt(i) == chars[j]) {
+            for (int j = 0; j < aChars.length; j++) {
+                if (vTxt.charAt(i) == aChars[j]) {
                     vOcc[j]++;
                 }
             }
@@ -92,11 +93,10 @@ public class Crypto {
         vChiffre = vChiffre.toUpperCase();
         String vClair = "";
         // =========== TODO Question-3
-        char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-                'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
         for (int i = 0; i < vChiffre.length(); i++) {
-            for (int j = 0; j < chars.length; j++) {
-                if (vChiffre.charAt(i) == chars[j]) {
+            for (int j = 0; j < aChars.length; j++) {
+                if (vChiffre.charAt(i) == aChars[j]) {
                     vClair += pKey[j];
                 }
             }
@@ -125,16 +125,18 @@ public class Crypto {
     public static void main(final String[] pArgs) {
 
         // TODO Question-3
-        char[] vKey = { 'V', '.', '.', 'M', 'H', 'N', 'O', 'P', 'C', 'Q', 'R', 'S', 'T', '.', 'I', 'J', '.', 'D', 'L',
+        char[] vKey1 = { 'V', '.', '.', 'M', 'H', 'N', 'O', 'P', 'C', 'Q', 'R', 'S', 'T', '.', 'I', 'J', '.', 'D', 'L',
                 'E', 'G', '.', 'U', 'A', 'B', 'F' };
-        System.out.println(subDecrypt("crypto1.txt", vKey));
-
+        System.out.println(subDecrypt("crypto1.txt", vKey1));
+        System.out.println(subDecrypt("crypto2.txt", vKey1));
         // Fin TODO Question-3
 
         /* ============================================================= */
 
         // TODO Question-4
-
+        char[] vKey2 = { 'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                'N', 'O', 'P', 'Q', 'R', 'S', 'T' };
+        System.out.println(subDecrypt("crypto3.txt", vKey2));
         // Fin TODO Question-4
 
         /* ============================================================= */
