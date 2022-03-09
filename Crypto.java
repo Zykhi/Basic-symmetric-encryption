@@ -69,8 +69,15 @@ public class Crypto {
          */
         int[] vOcc = new int[26];
         // ========== TODO Question-1
-        
-
+        char[] chars = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+                'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+        for (int i = 0; i < vTxt.length(); i++) {
+            for (int j = 0; j < chars.length; j++) {
+                if (vTxt.charAt(i) == chars[j]) {
+                    vOcc[j] ++;
+                }
+            }
+        }
         // ========== Fin TODO Question-1
         return vOcc;
     } // frequences()
