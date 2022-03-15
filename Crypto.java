@@ -163,6 +163,6 @@ public class Crypto {
 
         // TODO question 9
         String vKey4 = "TRLK";
-        ecbXor("txt/cryptoHTML.txt", "txt/outputHTML.txt", vKey4);
+        ecbXor("txt/SECRETPAGE.txt", "txt/outputHTML.txt", vKey4);
     } // main()
 } // Crypto
