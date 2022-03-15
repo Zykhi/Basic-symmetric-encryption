@@ -118,9 +118,9 @@ public class Crypto {
         byte[] vTxtByte = strToByte(vTxt);
         byte[] vKeyByte = strToByte(pKey);
         byte[] vOutputByte = new byte[vTxtByte.length];
-        
-        for (int i = 0; i< vTxtByte.length; i++){
-            vOutputByte[i] = (byte) (vTxtByte[i]^vKeyByte[i%vKeyByte.length]);
+
+        for (int i = 0; i < vTxtByte.length; i++) {
+            vOutputByte[i] = (byte) (vTxtByte[i] ^ vKeyByte[i % vKeyByte.length]);
         }
         String vOutput = byteToStr(vOutputByte);
         writeFile(vOutput, pOutfile, false);
@@ -152,7 +152,7 @@ public class Crypto {
 
         // TODO Question-6
         String vKey3 = "ABCD";
-        ecbXor("txt/crypto4.txt", "txt/output1.txt", vKey3); 
+        ecbXor("txt/crypto4.txt", "txt/output1.txt", vKey3);
         // Fin TODO Question-6
 
         /* ============================================================= */
