@@ -89,18 +89,18 @@ public class Crypto {
      */
 
     public static String subDecrypt(final String pFile, final char[] pKey) {
-        String vChiffre = readFile(pFile);
-        vChiffre = vChiffre.toUpperCase();
+        String vTxt = readFile(pFile);
+        vTxt = vTxt.toUpperCase();
         String vClair = "";
         // =========== TODO Question-3
 
-        for (int i = 0; i < vChiffre.length(); i++) {
+        for (int i = 0; i < vTxt.length(); i++) {
             for (int j = 0; j < aChars.length; j++) {
-                if (vChiffre.charAt(i) == aChars[j]) {
+                if (vTxt.charAt(i) == aChars[j]) {
                     vClair += pKey[j];
                 }
             }
-            if (vChiffre.charAt(i) == ' ')
+            if (vTxt.charAt(i) == ' ')
                 vClair += " ";
         }
         // =========== Fin TODO Question-3
@@ -114,7 +114,16 @@ public class Crypto {
 
     public static void ecbXor(final String pInfile, final String pOutfile, final String pKey) {
         // =========== TODO Question-5
-
+        String vTxt = readFile(pInfile);
+        byte[] vTxtByte = strToByte(vTxt);
+        byte[] vKeyByte = strToByte(pKey);
+        byte[] vOutputByte = new byte[vTxtByte.length];
+        
+        for (int i = 0; i< vTxtByte.length; i++){
+            vOutputByte[i] = (byte) (vTxtByte[i]^vKeyByte[i%vKeyByte.length]);
+        }
+        String vOutput = byteToStr(vOutputByte);
+        writeFile(vOutput, pOutfile, false);
         // =========== Fin TODO Question-5
     } // ecbXor()
 
@@ -127,8 +136,8 @@ public class Crypto {
         // TODO Question-3
         char[] vKey1 = { 'V', '.', '.', 'M', 'H', 'N', 'O', 'P', 'C', 'Q', 'R', 'S', 'T', '.', 'I', 'J', '.', 'D', 'L',
                 'E', 'G', '.', 'U', 'A', 'B', 'F' };
-        System.out.println(subDecrypt("crypto1.txt", vKey1));
-        System.out.println(subDecrypt("crypto2.txt", vKey1));
+        System.out.println(subDecrypt("txt/crypto1.txt", vKey1));
+        System.out.println(subDecrypt("txt/crypto2.txt", vKey1));
         // Fin TODO Question-3
 
         /* ============================================================= */
@@ -136,20 +145,24 @@ public class Crypto {
         // TODO Question-4
         char[] vKey2 = { 'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T' };
-        System.out.println(subDecrypt("crypto3.txt", vKey2));
+        System.out.println(subDecrypt("txt/crypto3.txt", vKey2));
         // Fin TODO Question-4
 
         /* ============================================================= */
 
         // TODO Question-6
-
+        String vKey3 = "ABCD";
+        ecbXor("txt/crypto4.txt", "txt/output1.txt", vKey3); 
         // Fin TODO Question-6
 
         /* ============================================================= */
 
         // TODO Question-8
-
+        ecbXor("txt/crypto5.txt", "txt/output2.txt", vKey3);
         // Fin TODO Question-8
 
+        // TODO question 9
+        String vKey4 = "TRLK";
+        ecbXor("txt/cryptoHTML.txt", "txt/outputHTML.txt", vKey4);
     } // main()
 } // Crypto
