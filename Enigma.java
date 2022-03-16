@@ -52,6 +52,18 @@ public class Enigma {
         /* ============================================================= */
 
         // TODO Question-10
+        Rotor aRotor = new Rotor(vR1, vR2, vR3, vRF);
+
+        System.out.println(Arrays.toString(vR1[0]));
+        System.out.println(Arrays.toString(vR1[1]));
+
+        System.out.println(Arrays.toString(vR2[0]));
+        System.out.println(Arrays.toString(vR2[1]));
+
+        System.out.println(Arrays.toString(vR3[0]));
+        System.out.println(Arrays.toString(vR3[1]));
+
+        System.out.println(Arrays.toString(vRF));
 
         // Fin TODO Question-10
         /* ============================================================= */
